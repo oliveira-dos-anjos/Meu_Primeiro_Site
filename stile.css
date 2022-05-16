@@ -12,8 +12,11 @@
 :root{
     --font-primary:  "Baloo Da 2", serif;
     --font-secondary:  "Josefin Slab", serif;
-    --font-action:  "Muli" serif;
-     
+    --font-action:  "Muli" serif;   
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 .Hamburger span{
@@ -75,6 +78,7 @@
 
 .show-menu #line1{
     transform: rotate(45deg) translate(.3rem, .3rem);
+    z-index: 100;
 }
 
 .show-menu #line2{
@@ -83,6 +87,7 @@
 }
 .show-menu #line3{
     transform: rotate(-45deg) translate(.2rem, -.5rem);
+    z-index: 100;
 }
 
 
@@ -170,18 +175,20 @@ header{
 }
 
 .banner button:hover{
-    color:  #fff;
+    color:  rgb(236, 236, 236);
     opacity: 1;
 }
 
 .Sidebar{
     width: 20rem;
     height: 100vh;
-    background-color: #fff;
+    background-color: rgb(235, 223, 223);
     position: fixed;
     top: 0;
     right: -20rem;
-    transition: all .5s;
+    transition: all 1s;
+    z-index: 10;
+    opacity: .8;
 }
 
 .show-menu .Sidebar{
@@ -580,4 +587,71 @@ header{
     padding: 1rem;
     cursor: pointer;
     grid-column: 2;
+}
+
+.footer{
+    width: 100%;
+    height: 7rem;
+    background-color: #17181b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-content p{
+    font-family: var(--font-secondary);
+    color: #a7a7a7;
+    font-size: 1.2rem;
+}
+
+.social-list a{
+    margin: 0 2rem;
+    font-size: 1.3rem;
+    color: #a7a7a7;
+}
+
+.social-list ul{
+    display: flex;
+}
+
+#link-topo{
+    position: fixed;
+    bottom: 2rem;
+    width: 3rem;
+    height: 3rem;
+    right: 3rem;
+    background: #6a3093;
+    background: -webkit-linear-gradient(to right, #3c1053, #ad5389);
+    background: linear-gradient(to left, #3c1053, #ad5389);
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: .3rem;
+    box-shadow: 0 .1rem .6rem #00000009; 
+    display: flex;
+    transition: all 1s; 
+}
+
+.show-menu #link-topo{
+    position: fixed;
+    bottom: 2rem;
+    width: 3rem;
+    height: 3rem;
+    right: 22rem;
+    background: #6a3093;
+    background: -webkit-linear-gradient(to right, #3c1053, #ad5389);
+    background: linear-gradient(to left, #3c1053, #ad5389);
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: .3rem;
+    box-shadow: 0 .1rem .6rem #00000009; 
+    display: flex;
+    transition: all 1s;
 }
