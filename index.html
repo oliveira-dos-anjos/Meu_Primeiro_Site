@@ -186,19 +186,21 @@
                     <div class="contato-left"></div>
                     <div class="contato-right">
                         <h1>Contato</h1>
-                        <form>
+                        <form action="https://formsubmit.co/raffasadol@gmail.com" method="POST">
                             <div class="input-group">
-                                <input type="text" class="field" id="nome">
+                                <input type="text" class="field" name="nome" id="nome" required>
                                 <label for="nome" class="field-label">Nome</label>
                             </div>
                             <div class="input-group">
-                                <input type="text" class="field" id="email">
+                                <input type="text" class="field" name="email" id="email" required>
                                 <label for="email" class="field-label">E-mail</label>
                             </div>
                             <div class="input-group">
-                                <textarea class="field" id="mensagem"></textarea>
+                                <textarea class="field" name="mensagem" placeholder=""></textarea>
                                 <label for="mensagem" class="field-label">Mensagem</label>
                             </div>
+                            <input type="hidden" name="_captcha" value="true">
+                            <input type="hidden" name="_next" value="http://127.0.0.1:5500/index.html">
                             <button type="submit" class="btn btn-submit">Enviar</button>
                         </form>                      
                     </div>
