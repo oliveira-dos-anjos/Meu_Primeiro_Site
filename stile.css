@@ -5,7 +5,6 @@
 
 *{
     margin: 0;
-    max-width: 1920px;
     padding: 0;
     list-style: none;
     text-decoration: none;
@@ -43,12 +42,53 @@ html{
     left: -1rem;
 }
 
+.banner .info-box{
+    left: 13rem;
+    bottom: 8.5rem;
+
+    background-color: #c9bebe;
+    border: 1px solid #ffffff;
+    text-shadow: none;
+    border-radius: 20px;
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #eb0505;
+    animation-name: stretch;
+    animation-duration: .5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    max-width: 75%;
+    max-height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@keyframes stretch{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+.banner .info-box p{
+    font-size: 1.4rem;
+    color: #000;
+    text-shadow: none;
+    font-family: var(--font-secondary);
+    font-style: italic;
+    margin: .1rem;   
+}
+
 .show-menu .Hamburger:hover span{
     opacity: 1;
 }
 
 .Hamburger{
- /* background-color:  #000;*/
+    /*background-color: #680909;/*/
     width: 2rem;
     height: 2rem;
     position: fixed;
@@ -62,29 +102,26 @@ html{
     transition: all 1s;
 }
 
-
-
 .Hamburger:hover{
     color: #3c1053;
 }
 
+  
+
+.Hamburger #line2{
+transition: all 1.3s;
+}
 .show-menu .Hamburger{
     right: 16rem;
     transition: all 1s;
 }
 
-
-
 .line{
     width: 100;
-    background-color: #fff;
+    background-color: #ffffff;
     height: .2rem;
-    box-shadow: .1rem .1rem 1px #000;
+    box-shadow: .2rem .2rem 2px #000;
     transition: transform 1s;
-}
-
-.Hamburger #line2{
-    transition: all 1.5s;
 }
 
 .show-menu #line1{
@@ -96,7 +133,7 @@ html{
 .show-menu #line2{
     opacity: 0;
     visibility: hidden;
-    transition: all .5s;
+    transition: all .8s;
 }
 .show-menu #line3{
     transform: rotate(-45deg) translate(.3rem, -.5rem);
@@ -124,7 +161,7 @@ header{
     height: 100%;
     object-fit: cover;
     opacity: 0.5;
-    animation: zoom 20s;
+    animation: zoom 20s linear infinite alternate;
 
 }
 
@@ -142,7 +179,7 @@ header{
 .banner{
     position: absolute;
     top: 30%;
-    left: 15%;
+    left: 5%;
 }
 
 .banner h1{
@@ -157,7 +194,6 @@ header{
     animation: MoveBanner .6s forwards;
     
 }
-
 
 .banner p{
     color: #ffff;
@@ -193,13 +229,13 @@ header{
 .Sidebar{
     width: 20rem;
     height: 100vh;
-    background-color: rgb(235, 223, 223);
+    background-color: rgb(153, 139, 139);
     position: fixed;
     top: 0;
     right: -20rem;
     transition: all 1s;
     z-index: 10;
-    opacity: .94;
+    opacity: .98;
 }
 
 .show-menu .Sidebar{
@@ -209,7 +245,7 @@ header{
 .menu{
     position: absolute;
     top: 15%;
-    left: 0%;
+    left: -15%;
     transform: translate(50%, 50%);
 }
 
@@ -220,13 +256,13 @@ header{
 }
 
 .menu-link{
-    font-family: var(--font-action);
+    font-family: var(--font-primary);
     font-size: 2rem;
-    color: #555;
+    color: #0a0a0a;
 }
 
 .menu-link:hover{
-    color: #3c1053;
+    color: #360a4e;
 }
 
 .social-media{
@@ -358,8 +394,8 @@ header{
 }
 
 .card{
-    width: 18rem;
-    height: 25rem;
+    width: 20rem;
+    height: 28rem;
     position: relative;
 }
 
@@ -384,33 +420,34 @@ header{
 }
 .card-info{
     position: absolute;
-    top: 10%;
-    bottom: 0;
+    top: -1rem;
     opacity: 0;
     visibility: hidden;
-    padding: .5rem;
+    padding: 1.8rem;
     text-shadow: 0.3rem 0.2rem 0.3rem rgba(0, 0, 0, .4);
-    transition: all .8s;
+    transition: all .5s;   
 }
 
 .card-info h2{
     font-family: var(--font-primary);
     font-size: 2rem;
     font-weight: 500;
-    color: #eee;
+    color: #eee;  
 }
 
 .card-info h3{
     font-family: var(--font-action);
     font-weight: bolder;
     color: #ff4881;
-    margin: 1.5rem;
+    margin: 1.2rem;
+    margin-left: 0rem;
 }
 
 .card-info p{
-    font-family: var(--font-secondary);
-    color: #eee;
+    font-family: var(--font-action);
+    color: #ffffff;
     font-weight: 400;
+    font-size: 1rem;
     width: 110%;
     margin-bottom: 2rem;
 }
@@ -428,15 +465,35 @@ header{
 }
 
 .card-info button{
-    width: 7rem;
-    height: 2rem;
+    width: 8rem;
+    height: 2.5rem;
 
 }
 .card:hover .card-info{
-    bottom: .1rem;
+    bottom: 2rem;
     opacity: 1;
     visibility: visible;
 }
+
+.descricao {
+    display: none;
+    margin-top: 10px;
+}
+  
+.descricao p {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.descricao a {
+    color: rgb(12, 233, 42); /* Define a cor do link não visitado */
+    text-decoration: none; /* Adiciona um sublinhado padrão para indicar um link */
+}
+  
+.descricao a:hover {
+    color: green; /* Define a cor do link ao passar o mouse sobre ele */
+}
+  
 
 
 .sessao-contato{
@@ -545,6 +602,7 @@ header{
 }
 
 .orcamento-wrapper{
+    top: .5rem;
     width: 60%;
     height: 80%;
     background-color: #ffffff99;
@@ -555,7 +613,7 @@ header{
 
 .sessao-orcamento h1{
     position: absolute;
-    top: -2.5rem;
+    top: -3.4rem;
     left: 2rem;
     background: #6a3093;
     background: -webkit-linear-gradient(to right, #3c1053, #ad5389);
@@ -571,7 +629,7 @@ header{
 }
 
 .sessao-orcamento form{
-    margin: 4rem;
+    margin: 2rem;
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 2rem;
@@ -582,16 +640,39 @@ header{
     font-family: var(--font-secondary);
     font-size: 1.5rem;
     font-weight: bold;
+    margin: .5rem;
 }
 
 .sessao-orcamento input[type="number"]{
     font-family: var(--font-action);
     width: 4rem;
+    height: 2.5rem;
     font-size: 2rem;
     outline: none;
     border-radius: 10px;
     border: none;
     padding: .3rem;
+}
+
+.sessao-orcamento input[type="text"]{
+    font-family: var(--font-action);
+    width: 15rem;
+    height: 1.7rem;
+    font-size: 1.3rem;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    padding: .3rem;
+}
+
+.sessao-orcamento input[type="checkbox"]{
+    font-family: var(--font-action);
+    width: 2rem;
+    font-size: 1.2rem;
+    background-color: #ecebec;
+    border-radius: 10px;
+
+
 }
 
 .btn-orcamento{
@@ -601,13 +682,26 @@ header{
     grid-column: 2;
 }
 
+.footer{
+    width: 100%;
+    height: 7rem;
+    background-color: #17181b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
 
 .footer-content p{
     font-family: var(--font-secondary);
-    color: #a7a7a7;
+    color: #000000;
     font-size: 1.2rem;
 }
-
 
 #link-topo{
     position: fixed;
@@ -627,28 +721,41 @@ header{
     transition: all 1s; 
 }
 
-.show-menu #link-topo{
+.show-menu #link-topo{   
     right: 22rem;
-    transition: all 1s;
-}
-
-
-
-@media only screen and (min-width: 900px) {
 
 }
 
-
-@media only screen and (max-width: 450px) {
-
+/* Estilos para telas de celular */
+@media only screen and (max-width: 599px) {
     *{
         overflow-x: hidden;
     }
 
+    .banner .info-box{
+        position: relative;        
+        left: 0rem;
+        margin-top: -18.8rem;
+        max-height: 25rem;
+        max-width: 21.5rem;
+    }
+
+    .banner .info-box p{
+        font-size: 1.1rem;  
+    }
 
     .banner{
-        position: absolute;
-        top: 10%;
+        top: 50%;
+        left: 4%;
+    }
+
+    .banner.info-box-active{
+        top: 0%;
+        left: 4%;
+    }
+
+    .banner.info-box-active #btn-saiba-mais{
+        margin-top: 95%;
         left: 4%;
     }
 
@@ -656,52 +763,47 @@ header{
         font-size: 1.7rem;
         font-weight: 100;
         line-height: 2rem;
-        margin-bottom: 2rem;
-        align-items: center;
+        margin-bottom: 1rem;
+
     }
     
-       .banner p{
+    .banner p{
         font-size: 1.3rem;
         margin-bottom: 5rem;
     }
     
     .banner button{
-        letter-spacing: .1rem;
         padding: .4rem .4rem;
-        border: none;
         border-radius: 2.5px;
-
     }
 
     .menu{
         position: absolute;
-        top: 0%;
-        left: 0%;
+        top: 5%;
+        left: -15%;
         transform: translate(50%, 50%);
     }
     
     .menu-item{
         text-align: center;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
         transition: color 1s;
+        color: #fff;
     }
     
     .menu-link{
-        font-size: 1.5rem;
+        font-size: 2.1rem;
     }
 
     #link-topo{
         bottom: 1rem;
-        width: 3rem;
-        height: 3rem;
+        width: 2rem;
+        height: 2rem;
         right: 1rem; 
-        opacity: 1;
     }
     
     .show-menu #link-topo{
-    opacity: 0;
-    right: 22rem;
-    transition: all 1s;
+    display: none;
     }
 
     .conhecimentos{
@@ -716,26 +818,32 @@ header{
     }
     
     .conhecimento:nth-child(1){
+        overflow-y: hidden;
         grid-column: 2/1;
     }
     
     .conhecimento:nth-child(2){
+        overflow-y: hidden;
         grid-column: 3/1;
     }
     
     .conhecimento:nth-child(3){
+        overflow-y: hidden;
         grid-column: 2/1;
     }
     
     .conhecimento:nth-child(4){
+        overflow-y: hidden;
         grid-column: 2/4;
     }
     
     .conhecimento:nth-child(5){
+        overflow-y: hidden;
         grid-column: 2/4;
     }
     
     .conhecimento:nth-child(6){
+        overflow-y: hidden;
         grid-column: 2/4;
     }
     
@@ -749,8 +857,7 @@ header{
         font-size: 2.4rem;
         margin-bottom: 2rem;
     }
-    
-    
+        
     .conhecimento-header i{
         font-size: 2.4rem;
     }
@@ -759,25 +866,27 @@ header{
         font-size: 1.5rem;
         padding-left: 1rem;
     }
-
     
     .conhecimentos-img-wrapper img{
         opacity: 0;
     }
 
+    .card-img-wrapper{
+        overflow-y: hidden;
+    }
 
     .card-info{
         top: 8%;
     }
 
-
     .card-info h2{
         font-size: 1.5rem;
+        margin-left: -1.3rem;
     }
 
 
     .card-info h3{
-        margin: .5rem;   
+        margin-left: -0.5rem;   
         font-size: 1rem;
     }
     
@@ -794,7 +903,9 @@ header{
     
     .card-info button{
         width: 7rem;
-        height: 2rem;    
+        height: 2rem; 
+        margin-left: -22%;
+  
     }
 
     .contato-left{
@@ -806,14 +917,12 @@ header{
         width: 100%;
         height: 35rem;
     }
-
     
     .contato-right{
         width: 92%;
         padding: .5rem 1rem 1rem 1rem;
 
     }
-
         
     .sessao-contato{
         width: 100%;
@@ -822,18 +931,10 @@ header{
         left: 0rem;
     }
 
-    .footer-content p{
-        font-family: var(--font-secondary);
-        color: #990707;
-        font-size: 1rem;
-    }
-
-
     .orcamento-wrapper{
         width: 100%;
         height: 90%;
         border-radius: 0px;
-        position: relative;
     }
 
     .sessao-orcamento h1{
@@ -843,28 +944,374 @@ header{
 
     }
 
-    .sessao-orcamento form{
-        
+    .sessao-orcamento form{    
         margin-top: 5rem;
         margin-left: 0rem;
         margin-right: 0rem;
-        grid-template-columns: auto 1fr;
         column-gap: 1rem;
         row-gap: 1rem;
     }
 
     .sessao-orcamento input[type="number"]{
-        font-family: var(--font-action);
         width: 2.5rem;
+        height: 1.7rem;
         font-size: 1.4rem;
     }
 
+    .sessao-orcamento input[type="radio"]{
+        width: 1rem;
+        height: 1rem;
+        margin: -.4rem;
+        margin-left: -9rem;
+        position: absolute;
+    }
+
+
+    .group-layout label[for="layout-sim"]{
+        width: 15rem; 
+        font-size: 1.45rem;      
+        margin-top: -.7rem;
+        margin-left: -7rem;
+        position: absolute;
+
+    }
+
+    .group-layout label[for="layout-não"]{
+        width: 15rem;
+        font-size: 1.45rem;
+        margin-left: -7rem;
+        margin-top: -.7rem;
+        position: absolute;
+
+    } 
+
+    .sessao-orcamento input[type="checkbox"]{
+        margin-top: .9rem;
+        width: 1.4rem;
+        height: 1.4rem;
+        font-size: 1.4rem;
+    }
+
+    .sessao-orcamento input[type="range"]{
+        margin-left: -4.2rem;
+    }
+
+    .sessao-orcamento input[type="text"]{
+        width: 10rem;
+        height: 1.7rem;
+        font-size: 1.4rem;
+        margin-left: -7rem;
+        position: absolute;
+    }
+
     .btn-orcamento{
-        text-transform: uppercase;
         padding: .5rem;
-        cursor: pointer;
+    }
+    
+    .footer-content{
+        width: 80%;
+        height: 5%;
+    }
+
+    .footer-content p{
+        font-size: .8rem;
+    }
+
+    .Sidebar{
+        width: 18rem;
+        height: 100vh;
+    }
+
+    .show-menu .Hamburger{
+        right: 14rem;
+    }
+}
+
+
+
+/* Estilos para telas de tablet */
+@media only screen and (min-width: 600px) and (max-width: 1001px) {
+
+    
+    .banner .info-box{
+        position: relative;        
+        left: 0rem;
+        margin-top: -30%;
+        max-height: 25rem;
+        max-width: 45rem;
+    }
+
+    .banner .info-box p{
+        font-size: 1.3rem;  
+    }
+
+    .banner{
+        top: 50%;
+        left: 4%;
+    }
+
+    .banner.info-box-active{
+        top: 5%;
+        left: 4%;
+    }
+
+    .banner.info-box-active #btn-saiba-mais{
+        margin-top: 45%;
+        left: 4%;
+    }
+    
+    .banner h1{
+        font-size: 2rem;
+        line-height: 2.5rem;
+        margin-bottom: .8rem;    
+    }
+
+
+    .banner p{
+        font-size: 1.6rem;
+        margin-bottom: .8rem;
+    }
+
+    .banner button{
+        padding: .5rem .01rem;
+    }
+
+    .menu{
+    top: 0%;
+    left: -13%;
+    }
+
+    .menu-link{
+        font-size: 1.9rem;
+    }
+
+    .menu-item{
+        margin-bottom: -.4rem;
+
+    }
+    .Sidebar{
+        width: 18rem;
+    }
+
+    .show-menu .Hamburger{
+        right: 14rem;
+    }
+
+    .show-menu .Hamburger:hover span{
+        display: none;
+    }
+    
+    #link-topo{
+        margin-right: -1.5rem;
+        bottom: 1rem;
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    .social-media i{
+        margin-bottom: -1rem;
+    }
+    
+    .show-menu #link-topo{
+        margin-right: -3rem;
+        }
+
+    .conhecimentos{
+        grid-template-columns: repeat(16, 1fr);
+        grid-template-rows: repeat(7, 5rem);
+        row-gap: .1px;
+    }
+    
+    .conhecimento:nth-child(1){
+        grid-column: 2/8;
+        grid-row: 1/1;
+    }
+    
+    .conhecimento:nth-child(2){
+        grid-column: 1/6;
+        grid-row: 3/3;
+    }
+    
+    .conhecimento:nth-child(3){
+        grid-column: 2/8;
+        grid-row:5/5;
+    }
+    
+    .conhecimento:nth-child(4){
+        grid-column: 11/16;
+        grid-row: 1/1;
+    }
+    
+    .conhecimento:nth-child(5){
+        grid-column: 12/17;
+        grid-row: 3/3;
+    }
+    
+    .conhecimento:nth-child(6){
+        grid-column: 11/16;
+        grid-row: 5/5;
+    }
+    
+    .sessao-header h1{
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .conhecimento-header i{
+        font-size: 2.5rem;
+    }
+    
+    .conhecimento-header h3{
+        font-size: 1.4rem;
+    }
+    
+    .conhecimento-text{
+        margin-top: .1rem;
+    }
+    
+    .conhecimentos-img-wrapper{
+        grid-column: 6/10;
+        grid-row: 2/6;
+        opacity: 0.3;
+        width: 160%;
+    }
+        
+    .sessao-contato{
+        height: 100%;
+        margin-top: -1.5rem;
+    }
+
+    .contato-wrapper{
+        height: 26rem;
+    }
+
+    .contato-left{
+        width: 45%;
+    }
+
+    .contato-right{
+        width: 90%;
+    }
+
+    .sessao-contato h1{
+        width: 100%;
+        font-size: 2.4rem;
+    }
+
+    .sessao-contato form{
+        margin-top: -1rem;
+        width: 90%;
+    }
+
+    .field{
+        width: 15rem;
+        font-size: 1.3rem;
+        height: 2rem;
+        }
+
+    .field-label{
+        top: 2rem;
+        font-size: 1.2rem;
+    }
+
+    .input-group textarea{
+        padding-top: 1rem;
+        max-width: 10rem;
+        max-height: 3rem;
+    }
+
+    .field:focus ~ label{
+        top: 0; 
+        font-size: 1rem;
+    }
+
+    .field:focus{
+        border-bottom: 1px solid;
+    }
+
+    .btn-submit{
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        width: 100%;
+        height: 2rem;
+        margin-top: 1rem;
+    }
+
+    .orcamento-wrapper{
+        top: 1rem;
+        width: 85%;
+        height: 87%;
+    }
+
+    .sessao-orcamento h1{
+        top: -1.5rem;
+        padding: 0 1rem;
+        font-size: 2.4rem;
+    }
+
+    .sessao-orcamento form{
+        margin: 2rem;
+        font-size: 1rem;
+    }
+
+    .sessao-orcamento label{
+    font-size: 1.2rem;
+    margin: -.5rem;
+    margin-right: 1rem;
+    bottom: .1rem;
+    }
+
+    .sessao-orcamento input{
+        font-size: 1.2rem;
+        margin: -.5rem;
+        margin-right: 1rem;
+        }
+        
+    .sessao-orcamento input[type="number"]{
+        width: 2rem;
+        height: 1rem;
+        font-size: 1.3rem;
+        margin: -.5rem;
+    }
+
+    .sessao-orcamento input[type="text"]{
+        width: 15rem;
+        height: 1.7rem;
+        font-size: 1.3rem;
+        top: .3rem;
+    }
+
+    .sessao-orcamento input[type="checkbox"]{
+        width: 1.9rem;
+        font-size: 1.2rem;
+        margin: -.3rem;
+        border-radius: 10px;
+    }
+    
+    .group-layout label[for="layout-sim"]{
+        width: 15rem;      
+        margin-top: -.7rem;
+    }
+
+    .group-layout label[for="layout-não"]{
+        width: 15rem;
+        margin-top: -.7rem;
+    } 
+
+    .btn-orcamento{    
+        width: 6rem;
+        height: 2.5rem;
         grid-column: 2;
     }
 
-}
+    .footer-content{
+        width: 60%;
+        height: 3%;
+    }
 
+    .footer-content p{
+        color: #555050;
+        font-size: .9rem;
+    }
+
+}
