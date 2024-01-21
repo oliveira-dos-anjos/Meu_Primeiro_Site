@@ -2,13 +2,13 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/stile.css') }}">
-        <link rel="apple-touch-icon" sizes="180x180" href="static/imagens/apple-touch-icon.png">
-        <link rel="icon" tipe="image/png" sizes="32x32" href="static/imagens/favicon-32x32.png">
-        <link rel="icon" tipe="image/png" sizes="16x16" href="static/imagens/favicon-32x32.png">
-        <link rel="manifest" href="site.webmanifest">
-        <title>portfólio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stile.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='imagens/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='imagens/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='imagens/favicon-32x32.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+    <title>Rafael Oliveira</title>
     </head>
     <body>
         <div class="container">
@@ -20,15 +20,16 @@
             </div>
             <header id="Home">
                 <div class="img-wrapper">
-                    <img src="static/imagens/developer.jpg" alt="">
+                    <img src="{{ url_for('static', filename='imagens/developer.jpg') }}" alt="">
                 </div>
                 <div class="banner">
-                    <h1>Web Developer, Back End</h1>
-                    <h1>& Frond End Designer</h1>
+                    <h1>Dev Web Back End / Front End</h1>
+                    <h1>& Data Science Student</h1>
+                    <h1></h1>
                     <p>Rafael Oliveira</p>
                     <button id="btn-saiba-mais">Saiba mais</button>
                     <div class="info-box">
-                        <p>Olá me chamo Rafael, sou estudante de ciência de dados e front-end.</p>
+                        <p>Olá me chamo Rafael, sou estudante de ADS e desenvolvimento Back-end.</p>
                         <p>Tenho paixão por transformar dados em insights acionáveis e criar interfaces interativas e atraentes.</p>
                         <p>Sou um iniciante na área buscando uma oportunidade no mercado sendo capaz de apresentar bons resultados.</p>
                         <p>Estou sempre em busca de desafios para aplicar meus conhecimentos e aprimorar minhas habilidades.</p>
@@ -52,7 +53,7 @@
                     <a href="https://bit.ly/44QJTZT" target="_blank"><i class="fab fa-fa-brands fa-facebook"></i></a>
                     <a href="https://bit.ly/3R9ScNr" target="_blank"><i class="fab fa-brands fa-github"></i></a>
                     <a href="https://bit.ly/3RbGgdV" target="_blank"><i class="fab fa-brands fa-whatsapp"></i></a>
-                    <a href="https://bit.ly/466BRx1" target="_blank"><i class="fab fa-brands fa-instagram"></i></a>
+                    <a href="https://bit.ly/46xzPWY" target="_blank"><i class="fab fa-brands fa-instagram"></i></a>
                     <a href="https://tinyurl.com/yrpya35j" target="_blank"><i class="fab fa-brands fa-linkedin"></i></a>
                 </div>
             </aside>
@@ -84,7 +85,7 @@
                     </div>
                     <div class="conhecimento">
                         <div class="conhecimento-header">
-                            <i class="fas fa-pencil-alt"></i>
+                            <i class="fa fa-flask"></i>
                             <h3>Django</h3>
                         </div>
                         <div class="conhecimento-text">
@@ -123,7 +124,7 @@
                         </div>
                     </div>
                     <div class="conhecimentos-img-wrapper">
-                        <img src="static/imagens/Conhecimentos.png" alt="">
+                        <img src="{{ url_for('static', filename='/imagens/Conhecimentos.png') }}" alt="">
                     </div>
                 </div>
             </section>
@@ -134,7 +135,7 @@
                 <div class="projetos">
                     <div class="card">
                         <div class="card-img-wrapper">
-                            <img src="static/imagens/proj1.png" alt="imagem do projeto todo">
+                            <img src="{{ url_for('static', filename='/imagens/proj1.png') }}" alt="imagem do projeto todo">
                         </div>
                         <div class="card-info">
                             <h2>Trajetória</h2>
@@ -154,7 +155,7 @@
                     </div>
                     <div class="card">
                         <div class="card-img-wrapper">
-                            <img src="static/imagens/proj2.jpg" alt="imagem do projeto maratona">
+                            <img src="{{ url_for('static', filename='/imagens/proj2.jpg') }}" alt="imagem do projeto maratona">
                         </div>
                         <div class="card-info">
                             <h2>Maratona</h2>
@@ -164,20 +165,20 @@
                             <div class= "descricao" >
                                 <p>Técnico em automação industrial</p>
                                 <p>Metrologia, leitura e interpretação de desenho</p>
-                                <p>Curso em video - Mundo 1,2,3 PYTHON</p>
+                                <p>Curso em video - Python completo</p>
                                 <p>Curso em video - HTML / CSS & JavaScript</p>
                                 <p>Curso em video - Mysql</p>
                                 <p>Curso Em Video - Git & Github</p>
                                 <p>Udemi - Django</p>
-                                <p>Universidade Anhanguera - Programador Back End</p>
-                                <p>(CURSANDO)</p>
+                                <p>ADS - Faculdade metropolitna (Pausado)</p>
+                                <p>Univ. Anhanguera - Dev Back End (CURSANDO)</p>
                             </div>
                             <button id="btn-saiba-mais" class="btn">Saiba Mais</button>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-img-wrapper">
-                            <img src="static/imagens/proj3.jpg" alt="imagem do projeto Casa Bella">
+                            <img src="{{ url_for('static', filename='/imagens/proj3.jpg') }}" alt="imagem do projeto Casa Bella">
                         </div>
                         <div class="card-info">
                             <h2>Pequenos Projetos</h2>
@@ -187,11 +188,15 @@
                             <div class= "descricao" >
                                 <p><a href="https://bit.ly/44KqABy" target="_blank">Meu portfólio</a> - html/css/JavaScript</p>
                                 <p><a href="https://bit.ly/3Rg9gl0"target="_blank">cadastro de pessoas</a> - Python/Tkinter</p>
-                                <p><a href="https://bit.ly/3LbSQX2" target="_blank">mini jogo da forca</a> - python <a href=""></a></p>
+                                <p><a href="https://bit.ly/3LbSQX2" target="_blank">mini jogo da forca</a> - Python <a href=""></a></p>
                                 <p><a href="https://bit.ly/3Liazfr" target="_blank">Máquina preditiva</a> - Python/google colab</p>
+                                <p><a href="https://bit.ly/47bdsXm" target="_blank">Web Scraping</a> - Python</p>
+                                <p><a href="https://bit.ly/3ttofOY" target="_blank">Números repetidos da mega</a> - Python</p>
                                 <p><a href="https://tinyurl.com/yjrdmxns"target="_blank">Loteria</a> - Desenvolvido com phyton</p>
                                 <p><a href="https://tinyurl.com/mtm734su" target="_blank">Top 50 filmes</a> - Desenvolvido com python</p>
-                                <p><a href="https://tinyurl.com/5akzhk84" target="_blank">Autenticador 2FA</a> - Desenvolvido em python/p>
+                                <p><a href="https://tinyurl.com/5akzhk84" target="_blank">Autenticador 2FA</a> - Desenvolvido em python</p>
+                                <p><a href="https://github.com/oliveira-dos-anjos/calculadora_simples" target="_blank">Calculadora siples</a> - Python / Tkinter</p>
+                                <p><a href="https://github.com/oliveira-dos-anjos/sistema-hospitalar-com-flask" target="_blank">sistema hospitalar</a> - python / Flask</p>
                             </div>
                             <button class="btn">Saiba Mais</button>
                         </div>
@@ -199,18 +204,17 @@
                 </div>
             </section>
             <section class="sessao-contato" id="Contato">
-                <div class="contato-wrapper">                   
+                <div class="contato-wrapper">
                     <div class="contato-left"></div>
                     <div class="contato-right">
                         <h1>Contato</h1>
-                        <form action="https://formsubmit.co/raffasadol@gmail.com" method="POST">
+                        <form action="/" method="POST">
                             <div class="input-group">
-                                <input type="text" class="field" name="nome" placeholder="Nome"required>
+                                <input type="text" class="field" name="nome" placeholder="Nome" required>
                                 <label for="nome" class="field-label"></label>
-                                
                             </div>
                             <div class="input-group">
-                                <input type="text" class="field" name="email" placeholder="E-mail"required>
+                                <input type="email" class="field" name="email" placeholder="E-mail" required>
                                 <label for="email" class="field-label"></label>
                             </div>
                             <div class="input-group">
@@ -218,55 +222,60 @@
                                 <label for="mensagem" class="field-label"></label>
                             </div>
                             <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_next" value="https://bit.ly/44NY5TD">
-                            <button type="submit" class="btn btn-submit">Enviar</button>
-                        </form>                      
+                            <!-- Remova o campo "_next" para usar a rota padrão do Flask -->
+                            <button type="submit" class="btn btn-submit" name="btn-contato">Enviar</button>
+                        </form>
+                        {% if mensagem_email %}
+                        <p>{{ mensagem_email }}</p>
+                        {% endif %}                      
                     </div>
                 </div>
             </section>
             <section class="sessao-orcamento" id="Orcamento">
                 <div class="orcamento-wrapper">
-                    <h1>Faça um orçamento</h1>
-                    <form action="https://formsubmit.co/raffasadol@gmail.com" method="POST">
+                    <h1>Solicite um orçamento</h1>
+                    <form action="/" method="POST">
                         <label for="qtde">Qtde De Páginas</label>
                         <input type="number" min="1" name="qtde" id="qtde">
+                        
                         <label for="JS">Preciso de um script JS</label>
                         <input type="checkbox" name="JS" id="JS">
+                        
                         <label>Layout</label>
                         <div class="group-layout">
                             <div>
                                 <input type="radio" name="layout" id="layout-sim">
                                 <label for="layout-sim">Preciso de um layout</label>
                             </div>
-   
                         </div>
                         <label for=""></label>
                         <div class="group-layout">
                             <div>
                                 <input type="radio" name="layout" id="layout-nao">
-                                <label for="layout-não">Já tenho um layout</label>
+                                <label for="layout-nao">Já tenho um layout</label>
                             </div> 
                         </div>
-
-                        <label>E-mail</label>
+                    
+                        <label for="email">E-mail</label>
                         <div class="group-email">
                             <div>
-                                <input type="text" name="E-mail" required>
+                                <input type="email" name="email" required>
                             </div>
                         </div>
+                    
                         <label for="prazo">Prazo</label>
                         <input type="range" name="prazo" id="prazo" min="1" max="10">
-                        <label id="preco">R$ 0,00</label>
+                        <!--<label id="preco">R$ 0,00</label>-->
                         <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://bit.ly/44NY5TD">
-                        <button class="btn btn-orcamento" type="submit">Enviar</button>
-
-
-
+                        <button class="btn btn-orcamento" type="submit" name="btn-orcamento">Enviar</button>
                     </form>
+                    
+                    {% if mensagem_email %}
+                        <p>{{ mensagem_email }}</p>
+                    {% endif %}
+                    
                 </div>
             </section>
-
             <footer>
                 <div class="footer-content">
                     <p>
@@ -279,5 +288,5 @@
             </a>
         </div>    
     </body>
-    <script src="/static/JS/scripts.js"></script>
+    <script src="{{ url_for('static', filename='/JS/scripts.js') }}"></script>
 </html>

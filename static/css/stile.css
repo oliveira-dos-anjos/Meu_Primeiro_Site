@@ -45,7 +45,6 @@ html{
 .banner .info-box{
     left: 13rem;
     bottom: 8.5rem;
-
     background-color: #c9bebe;
     border: 1px solid #ffffff;
     text-shadow: none;
@@ -192,7 +191,7 @@ header{
     margin-bottom: 2rem;
     opacity: 0;
     animation: MoveBanner .6s forwards;
-    
+    overflow: hidden;
 }
 
 .banner p{
@@ -235,7 +234,7 @@ header{
     right: -20rem;
     transition: all 1s;
     z-index: 10;
-    opacity: .6;
+    opacity: .8;
 }
 
 .show-menu .Sidebar{
@@ -394,7 +393,8 @@ header{
 }
 
 .card{
-    width: 22rem;
+    overflow: hidden;
+    max-width: 22rem;
     position: relative;
 }
 
@@ -432,13 +432,14 @@ header{
     font-size: 2rem;
     font-weight: 500;
     color: #eee;
-    margin-left: -1rem; 
+    margin-left: -1rem;
 }
 
 .card-info h3{
     font-family: var(--font-action);
     font-weight: bolder;
-    color: #ff4881;
+    color: #ee6161;
+    padding-top: -10%;
     margin: 1.2rem;
     margin-left: 0rem;
 }
@@ -448,7 +449,7 @@ header{
     color: #ffffff;
     font-weight: 400;
     font-size: 1rem;
-    width: 110%;
+    width: 100%;
     margin-bottom: 2rem;
     
 }
@@ -468,7 +469,6 @@ header{
 .card-info button{
     width: 8rem;
     height: 2.5rem;
-
 }
 .card:hover .card-info{
     bottom: 2rem;
@@ -482,6 +482,7 @@ header{
   
 .descricao p {
     font-size: .9rem;
+    margin-bottom: 1.6rem;
     color: #ffffff;
     line-height: .4rem;
 }
@@ -655,7 +656,7 @@ header{
     padding: .3rem;
 }
 
-.sessao-orcamento input[type="text"]{
+.sessao-orcamento input[type="email"]{
     font-family: var(--font-action);
     width: 15rem;
     height: 1.7rem;
@@ -672,8 +673,6 @@ header{
     font-size: 1.2rem;
     background-color: #ecebec;
     border-radius: 10px;
-
-
 }
 
 .btn-orcamento{
@@ -736,7 +735,7 @@ header{
     .banner .info-box{
         position: relative;        
         left: 0rem;
-        margin-top: -18.8rem;
+        margin-top: -17.8rem;
         max-height: 25rem;
         max-width: 21.5rem;
     }
@@ -756,7 +755,7 @@ header{
     }
 
     .banner.info-box-active #btn-saiba-mais{
-        margin-top: 95%;
+        margin-top: 115%;
         left: 4%;
     }
 
@@ -785,8 +784,7 @@ header{
     .menu{
         position: absolute;
         top: -5%;
-        left: -22%;
-        
+        left: -22%;  
     }
     
     .menu-item{
@@ -876,15 +874,46 @@ header{
         opacity: 0;
     }
 
+
+    .projetos{
+        display: block;
+    }
+    
+    .sessao-header h1{
+        font-size: 2.4rem;
+        margin-bottom: 2rem;
+    }
+
+    .card{
+        left: 1rem;
+        margin-bottom: .3rem;
+        max-width: 93% !important;
+        height: 15.5rem;
+    }
+
+    .card-img-wrapper img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
     .card-img-wrapper{
         overflow-y: hidden;
     }
 
+    .card:hover{
+        z-index: 1;
+        height: 21rem;
+    }
+
     .card-info{
         padding: 1rem;
+        left: 1.5rem;
     }
 
     .card-info h2{
+        opacity: 1;
         font-size: 1.5rem;
         margin-left: -1rem;
     }
@@ -897,19 +926,37 @@ header{
     
     .card-info p{
         font-size: .7rem;
+        max-width: 300px;
+        overflow-y: hidden;
     }
 
-    .card{
-        width: 18rem;
-        height: 25rem;
-        position: relative;
-    }
     
     .card-info button{
+        margin-top: -1.5rem;
         width: 7rem;
         height: 2rem; 
-        margin-left: -22%;
-  
+        left: 3.5rem;
+    }
+
+    .card-info button{
+    width: 8rem;
+    height: 2.5rem;
+    }
+
+    .card:hover .card-info{
+        bottom: 2rem;
+        opacity: 1;
+        visibility: visible;
+        height: 20rem;
+    }
+    
+
+    .descricao p {
+        
+        color: #ffffff;
+        line-height: .6rem;
+        margin-bottom: 1rem;
+        overflow-y: hidden;
     }
 
     .contato-left{
