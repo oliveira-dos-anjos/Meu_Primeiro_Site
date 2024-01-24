@@ -5,12 +5,13 @@ import re
 app = Flask(__name__)
 
 # Configuração para Flask-Mail
-app.config['MAIL_SERVER'] = 'smtp-mail.outlook.com'
-app.config['MAIL_PORT'] = 587
+app.config['MAIL_SERVER'] = 'sandbox.smtp.mailtrap.io'
+app.config['MAIL_PORT'] = 587  # Use a porta adequada (25, 465, 587, ou 2525)
+app.config['MAIL_USERNAME'] = 'e958d96b2b17f3'
+app.config['MAIL_PASSWORD'] = '0bfa1545e72e3a'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = 'raffasadol@live.com'
-app.config['MAIL_PASSWORD'] = 'Miguel072017'
+app.config['MAIL_DEFAULT_SENDER'] = 'raffasadol@gmail.com'
 
 mail = Mail(app)
 
@@ -24,6 +25,9 @@ def validar_email(email):
 def index_email():
     mensagem_email = None
     msg = None
+
+    mensagem_email_contato = None
+    mensagem_email_orcamento = None
 
     if request.method == 'POST':
         nome = request.form.get('nome', 'Não informado')
@@ -48,13 +52,14 @@ def index_email():
                 msg = Message('*', sender='Contato através do portfólio', recipients=['Raffasadol@gmail.com'])
                 msg.body = f'Nome: {nome}\nEmail: {email}\nMensagem: {mensagem}'
 
-                mensagem_email = 'E-mail enviado com sucesso!'
+                mensagem_email_contato = 'E-mail enviado com sucesso!'
                 print(f'\033[34m{msg.body}\033[m')
     
-                mail.send(msg.body)  # Envia o e-mail
-    
-            else:
-                None
+                try:
+                    mail.send(msg)  # Envia o e-mail
+                except Exception as e:
+                    return f"Erro ao enviar o e-mail: {str(e)}"
+            
 
         elif 'btn-orcamento' in request.form:
             # O botão "Enviar Orçamento" na seção de Orçamento foi clicado
@@ -62,12 +67,15 @@ def index_email():
             msg = Message('*', sender='Contato através do portfólio', recipients=['Raffasadol@gmail.com'])
             msg.body = f'Mensagem: {mensagem}\nPáginas: {qtde}\nJavaScript: {js}\nLayout: {layout}\nPrazo: {texto_prazo}\nEmail: {email}\n'
 
-            mensagem_email = 'E-mail enviado com sucesso!'
+            mensagem_email_orcamento  = 'E-mail enviado com sucesso!'
             print(f'\033[34m{msg.body}\033[m')
+            try:
+                mail.send(msg)  # Envia o e-mail
+            except Exception as e:            
+                return f"Erro ao enviar o e-mail: {str(e)}"
+            
 
-            mail.send(msg.body)  # Envia o e-mail
-    
-    return render_template('index.html', mensagem_email=mensagem_email)
+    return render_template('index.html', mensagem_email_contato=mensagem_email_contato, mensagem_email_orcamento=mensagem_email_orcamento)
 
 
 if __name__ == '__main__':

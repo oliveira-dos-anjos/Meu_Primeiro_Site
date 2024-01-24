@@ -225,9 +225,11 @@
                             <!-- Remova o campo "_next" para usar a rota padrão do Flask -->
                             <button type="submit" class="btn btn-submit" name="btn-contato">Enviar</button>
                         </form>
-                        {% if mensagem_email %}
-                        <p>{{ mensagem_email }}</p>
-                        {% endif %}                      
+                        <div class="msg_contato">
+                            {% if mensagem_email_contato %}
+                                <p>{{ mensagem_email_contato }}</p>
+                            {% endif %}
+                        </div>              
                     </div>
                 </div>
             </section>
@@ -269,11 +271,11 @@
                         <input type="hidden" name="_captcha" value="false">
                         <button class="btn btn-orcamento" type="submit" name="btn-orcamento">Enviar</button>
                     </form>
-                    
-                    {% if mensagem_email %}
-                        <p>{{ mensagem_email }}</p>
-                    {% endif %}
-                    
+                    <div class="msg_orcamento">
+                        {% if mensagem_email_orcamento  %}
+                            <p>{{mensagem_email_orcamento}}</p>
+                        {% endif %}                    
+                    </div>                    
                 </div>
             </section>
             <footer>
