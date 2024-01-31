@@ -16,12 +16,11 @@ app.config['MAIL_DEFAULT_SENDER'] = 'raffasadol@gmail.com'
 mail = Mail(app)
 
 def validar_email(email):
-    padrao = r'^[\w\.]+@[a-zA-Z\d\.]+\.(com|edu|gov|org)$'
-    return re.match(padrao, email)
-
-
+    padrao = r'^[\w\.-]+@[a-zA-Z\d\.-]+\.(com|edu|gov|org)$'
+    return re.match(padrao, email) is not None
 
 @app.route('/', methods=['GET', 'POST'])
+
 def index_email():
     mensagem_email = None
     msg = None
@@ -39,8 +38,7 @@ def index_email():
         lay = request.form.get('layout', 'Não informado')
         layout = 'sim' if lay == 'on' else 'Não'
         prazo = request.form.get('prazo')
-        texto_prazo = f'{prazo} semana' if prazo == '1' else f'{prazo} semanas'
-        
+        texto_prazo = f'{prazo} semana' if prazo == '1' else f'{prazo} semanas'        
 
         if 'btn-contato' in request.form:
             # O botão "Enviar" na seção de Contato foi clicado
@@ -60,7 +58,6 @@ def index_email():
                 except Exception as e:
                     return f"Erro ao enviar o e-mail: {str(e)}"
             
-
         elif 'btn-orcamento' in request.form:
             # O botão "Enviar Orçamento" na seção de Orçamento foi clicado
 

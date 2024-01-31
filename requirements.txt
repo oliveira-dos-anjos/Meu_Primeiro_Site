@@ -5,11 +5,13 @@ blinker==1.7.0
 certifi==2023.11.17
 chardet==3.0.4
 charset-normalizer==3.3.2
+click>=7.1.2
 click-didyoumean==0.3.0
 colorama==0.4.6
 contourpy==1.2.0
 cycler==0.12.1
 fastapi==0.105.0
+Flask==2.0.0
 Flask-Mail==0.9.1
 fonttools==4.47.2
 googletrans==4.0.0rc1
@@ -51,4 +53,4 @@ tzdata==2023.3
 update==0.0.1
 urllib3==2.1.0
 uvicorn==0.24.0.post1
-Werkzeug==3.0.1
+Werkzeug==2.0.0
