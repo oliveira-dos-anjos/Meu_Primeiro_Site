@@ -742,10 +742,9 @@ header{
         overflow-x: hidden;
     }
 
-    .banner .info-box{
-        position: relative;        
+    .banner .info-box{        
         left: 0rem;
-        margin-top: -17.8rem;
+        margin-top: -22rem;
         max-height: 25rem;
         max-width: 21.5rem;
     }
@@ -765,8 +764,9 @@ header{
     }
 
     .banner.info-box-active #btn-saiba-mais{
-        margin-top: 115%;
+        margin-top: 90%;
         left: 4%;
+        margin-bottom: 6rem;
     }
 
     .banner h1{
@@ -784,7 +784,7 @@ header{
     
     .banner button{
         padding: .4rem .4rem;
-        border-radius: 2.5px;
+        border-radius: 8.5px;
     }
 
     .Sidebar{
@@ -895,7 +895,7 @@ header{
     }
 
     .card{
-        left: 1rem;
+        left: .8rem;
         margin-bottom: .3rem;
         max-width: 93% !important;
         height: 15.5rem;
