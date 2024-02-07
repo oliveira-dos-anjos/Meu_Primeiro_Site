@@ -1,8 +1,27 @@
 from flask import Flask, render_template, request
 from flask_mail import Mail, Message
 import re
+import sqlite3
 
 app = Flask(__name__)
+
+# Conexao com o banco de dados
+conn = sqlite3.connect('Clientes.db')
+cursor = conn.cursor()
+
+# Criacao de tabela se nao existir
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Clientes(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nome TEXT NOT NULL,
+        email TEXT NOT NULL,
+        mensagem TEXT NOT NULL              
+    )
+''')
+
+conn.commit()  # Salvar
+conn.close()  # Fechar
+
 
 # Configuração para Flask-Mail
 app.config['MAIL_SERVER'] = 'sandbox.smtp.mailtrap.io'
@@ -19,6 +38,16 @@ def validar_email(email):
     padrao = r'^[\w\.-]+@[a-zA-Z\d\.-]+\.(com|edu|gov|org)$'
     return re.match(padrao, email) is not None
 
+def Salvar_info(nome, email, mensagem):
+    conn = sqlite3.connect('Clientes.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        INSERT INTO Clientes (nome, email,mensagem)
+        VALUES(?, ?, ?)
+    ''', (nome, email,mensagem))
+    conn.commit()  # Salvar
+    conn.close()  # Fechar
+
 @app.route('/', methods=['GET', 'POST'])
 
 def index_email():
@@ -27,6 +56,13 @@ def index_email():
 
     mensagem_email_contato = None
     mensagem_email_orcamento = None
+
+    conn = sqlite3.connect('Clientes.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM Clientes')  # all
+    Clientes = cursor.fetchall()
+    conn.close()
+    
 
     if request.method == 'POST':
         nome = request.form.get('nome', 'Não informado')
@@ -39,6 +75,7 @@ def index_email():
         layout = 'sim' if lay == 'on' else 'Não'
         prazo = request.form.get('prazo')
         texto_prazo = f'{prazo} semana' if prazo == '1' else f'{prazo} semanas'        
+
 
         if 'btn-contato' in request.form:
             # O botão "Enviar" na seção de Contato foi clicado
@@ -55,6 +92,8 @@ def index_email():
     
                 try:
                     mail.send(msg)  # Envia o e-mail
+                    Salvar_info(nome, email, mensagem)
+
                 except Exception as e:
                     return f"Erro ao enviar o e-mail: {str(e)}"
             
@@ -68,12 +107,15 @@ def index_email():
             print(f'\033[34m{msg.body}\033[m')
             try:
                 mail.send(msg)  # Envia o e-mail
+                Salvar_info(nome, email, mensagem)
+
             except Exception as e:            
                 return f"Erro ao enviar o e-mail: {str(e)}"
             
 
-    return render_template('index.html', mensagem_email_contato=mensagem_email_contato, mensagem_email_orcamento=mensagem_email_orcamento)
+    return render_template('index.html', Clientes=Clientes, mensagem_email_contato=mensagem_email_contato, mensagem_email_orcamento=mensagem_email_orcamento)
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
