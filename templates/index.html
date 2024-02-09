@@ -226,10 +226,16 @@
                             <button type="submit" class="btn btn-submit" name="btn-contato">Enviar</button>
                         </form>
                         <div class="msg_contato">
-                            {% if mensagem_email_contato %}
-                                <p>{{ mensagem_email_contato }}</p>
-                            {% endif %}
-                        </div>              
+                            <div class="msg_contato">
+                                {% if mensagem_email_contato %}
+                                    <p class="msg_sucesso">{{ mensagem_email_contato }}</p>
+                                {% endif %}
+                                {% if erro_contato %}
+                                    <p class="msg_erro">{{ erro_contato }}</p>
+                                {% endif %}
+                            </div>                            
+                        </div>
+                                     
                     </div>
                 </div>
             </section>
@@ -273,8 +279,11 @@
                     </form>
                     <div class="msg_orcamento">
                         {% if mensagem_email_orcamento  %}
-                            <p>{{mensagem_email_orcamento}}</p>
-                        {% endif %}                    
+                            <p class="erro">{{mensagem_email_orcamento}}</p>
+                        {% endif %}
+                        {% if erro_orcamento %}
+                                    <p class="msg_erro">{{ erro_orcamento }}</p>
+                        {% endif %}                   
                     </div>                    
                 </div>
             </section>

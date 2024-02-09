@@ -1,16 +1,17 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
+import os
 
 app = Flask(__name__)
 
-# Conexao com o banco de dados
-conn = sqlite3.connect('Clientes.db')
-cursor = conn.cursor()
+
+# Obtendo o caminho absoluto para o arquivo Clientes.db na pasta 'data'
+db_path = os.path.join(app.root_path, 'data', 'Clientes.db')
 
 
 @app.route('/')
 def index():
-    conn = sqlite3.connect('Clientes.db')
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM Clientes')  # all
     Clientes = cursor.fetchall()

@@ -118,9 +118,14 @@ document.querySelector("#JS").addEventListener("change", atualizaPreco)
 document.querySelector("#layout-sim").addEventListener("change", atualizaPreco)
 document.querySelector("#layout-nao").addEventListener("change", atualizaPreco)
 document.querySelector("#prazo").addEventListener("change", function () {
-    const prazo = document.querySelector("#prazo").value
-    document.querySelector("label[for=prazo]").innerHTML = `Prazo: ${prazo} semanas`
-    atualizaPreco()
+  const prazo = document.querySelector("#prazo").value;
+  const labelPrazo = document.querySelector("label[for=prazo]");
+  if (prazo === "1") {
+      labelPrazo.innerHTML = `Prazo: ${prazo} semana`;
+  } else {
+      labelPrazo.innerHTML = `Prazo: ${prazo} semanas`;
+  }
+  atualizaPreco();
 })
 
 

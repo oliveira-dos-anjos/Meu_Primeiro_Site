@@ -2,11 +2,16 @@ from flask import Flask, render_template, request
 from flask_mail import Mail, Message
 import re
 import sqlite3
+import os
 
 app = Flask(__name__)
 
+
+# Obtendo o caminho absoluto para o arquivo Clientes.db na pasta 'data'
+db_path = os.path.join(app.root_path, 'data', 'Clientes.db')
+
 # Conexao com o banco de dados
-conn = sqlite3.connect('Clientes.db')
+conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
 # Criacao de tabela se nao existir
@@ -39,7 +44,7 @@ def validar_email(email):
     return re.match(padrao, email) is not None
 
 def Salvar_info(nome, email, mensagem):
-    conn = sqlite3.connect('Clientes.db')
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute('''
         INSERT INTO Clientes (nome, email,mensagem)
@@ -51,69 +56,66 @@ def Salvar_info(nome, email, mensagem):
 @app.route('/', methods=['GET', 'POST'])
 
 def index_email():
-    mensagem_email = None
-    msg = None
-
     mensagem_email_contato = None
     mensagem_email_orcamento = None
+    erro_orcamento = None
+    erro_contato = None
+    conn = None
 
-    conn = sqlite3.connect('Clientes.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM Clientes')  # all
-    Clientes = cursor.fetchall()
-    conn.close()
-    
+    try:
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
 
-    if request.method == 'POST':
-        nome = request.form.get('nome', 'Não informado')
-        email = request.form.get('email', 'Email Padrão')
-        mensagem = request.form.get('mensagem', 'Solicitando orçamento')
-        qtd = request.form.get('qtde')
-        qtde = '1' if qtd == "" else qtd
-        js = 'Sim' if 'JS' in request.form else 'Não'
-        lay = request.form.get('layout', 'Não informado')
-        layout = 'sim' if lay == 'on' else 'Não'
-        prazo = request.form.get('prazo')
-        texto_prazo = f'{prazo} semana' if prazo == '1' else f'{prazo} semanas'        
+        cursor.execute('SELECT * FROM Clientes')
+        Clientes = cursor.fetchall()
 
+        if request.method == 'POST':
+            nome = request.form.get('nome', 'Não informado')
+            email = request.form.get('email', 'Email Padrão')
+            mensagem = request.form.get('mensagem', 'Solicitando orçamento')
+            qtd = request.form.get('qtde')
+            qtde = '1' if qtd == "" else qtd
+            js = 'Sim' if 'JS' in request.form else 'Não'
+            lay = request.form.get('layout', 'Não informado')
+            layout = 'sim' if lay == 'on' else 'Não'
+            prazo = request.form.get('prazo')
+            texto_prazo = f'{prazo} semana' if prazo == '1' else f'{prazo} semanas'        
 
-        if 'btn-contato' in request.form:
-            # O botão "Enviar" na seção de Contato foi clicado
+            if 'btn-contato' in request.form:
+                if validar_email(email):
+                    msg = Message('*', sender='Contato através do portfólio', recipients=['Raffasadol@gmail.com'])
+                    msg.body = f'Nome: {nome}\nEmail: {email}\nMensagem: {mensagem}'
 
-            if validar_email(email):
-
-                # Configura a mensagem de e-mail
-
-                msg = Message('*', sender='Contato através do portfólio', recipients=['Raffasadol@gmail.com'])
-                msg.body = f'Nome: {nome}\nEmail: {email}\nMensagem: {mensagem}'
-
-                mensagem_email_contato = 'E-mail enviado com sucesso!'
-                print(f'\033[34m{msg.body}\033[m')
-    
-                try:
-                    mail.send(msg)  # Envia o e-mail
+                    mensagem_email_contato = 'E-mail enviado com sucesso!'
+                    #mail.send(msg)
+                    
                     Salvar_info(nome, email, mensagem)
+                else:
+                    raise ValueError("Email inválido.")
 
-                except Exception as e:
-                    return f"Erro ao enviar o e-mail: {str(e)}"
-            
-        elif 'btn-orcamento' in request.form:
-            # O botão "Enviar Orçamento" na seção de Orçamento foi clicado
+            elif 'btn-orcamento' in request.form:
+                if validar_email(email):
+                    msg = Message('*', sender='Contato através do portfólio', recipients=['Raffasadol@gmail.com'])
+                    msg.body = f'Mensagem: {mensagem}\nPáginas: {qtde}\nJavaScript: {js}\nLayout: {layout}\nPrazo: {texto_prazo}\nEmail: {email}\n'
 
-            msg = Message('*', sender='Contato através do portfólio', recipients=['Raffasadol@gmail.com'])
-            msg.body = f'Mensagem: {mensagem}\nPáginas: {qtde}\nJavaScript: {js}\nLayout: {layout}\nPrazo: {texto_prazo}\nEmail: {email}\n'
+                    mensagem_email_orcamento  = 'E-mail enviado com sucesso!'
 
-            mensagem_email_orcamento  = 'E-mail enviado com sucesso!'
-            print(f'\033[34m{msg.body}\033[m')
-            try:
-                mail.send(msg)  # Envia o e-mail
-                Salvar_info(nome, email, mensagem)
+                    #mail.send(msg)
+                    Salvar_info(nome, email, mensagem)
+                else:
+                    raise ValueError('Email inválido.')
 
-            except Exception as e:            
-                return f"Erro ao enviar o e-mail: {str(e)}"
-            
+        return render_template('index.html', Clientes=Clientes, mensagem_email_contato=mensagem_email_contato, mensagem_email_orcamento=mensagem_email_orcamento)
 
-    return render_template('index.html', Clientes=Clientes, mensagem_email_contato=mensagem_email_contato, mensagem_email_orcamento=mensagem_email_orcamento)
+    except Exception as e:
+        if conn:
+            conn.rollback()
+        mensagem_erro = f"Erro: {str(e)}"
+        if "btn-contato" in request.form:
+            erro_contato = mensagem_erro
+        elif "btn-orcamento" in request.form:
+            erro_orcamento = mensagem_erro
+        return render_template('index.html', erro_contato=erro_contato, erro_orcamento=erro_orcamento)
 
 
 if __name__ == '__main__':
