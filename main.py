@@ -31,8 +31,8 @@ conn.close()  # Fechar
 # Configuração para Flask-Mail
 app.config['MAIL_SERVER'] = 'sandbox.smtp.mailtrap.io'
 app.config['MAIL_PORT'] = 587  # Use a porta adequada (25, 465, 587, ou 2525)
-app.config['MAIL_USERNAME'] = 'e958d96b2b17f3'
-app.config['MAIL_PASSWORD'] = '0bfa1545e72e3a'
+app.config['MAIL_USERNAME'] = '64ca769ddbdaf9'
+app.config['MAIL_PASSWORD'] = 'dbfadf8e05aa9a'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 app.config['MAIL_DEFAULT_SENDER'] = 'raffasadol@gmail.com'
@@ -87,7 +87,7 @@ def index_email():
                     msg.body = f'Nome: {nome}\nEmail: {email}\nMensagem: {mensagem}'
 
                     mensagem_email_contato = 'E-mail enviado com sucesso!'
-                    #mail.send(msg)
+                    mail.send(msg)
                     
                     Salvar_info(nome, email, mensagem)
                 else:
@@ -100,7 +100,7 @@ def index_email():
 
                     mensagem_email_orcamento  = 'E-mail enviado com sucesso!'
 
-                    #mail.send(msg)
+                    mail.send(msg)
                     Salvar_info(nome, email, mensagem)
                 else:
                     raise ValueError('Email inválido.')
