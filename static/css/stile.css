@@ -687,6 +687,10 @@ header{
     border-radius: 10px;
 }
 
+.spacer {
+    flex: 1;
+}
+
 .btn-orcamento{
     text-transform: uppercase;
     padding: 1rem;
