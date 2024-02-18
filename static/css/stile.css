@@ -691,6 +691,10 @@ header{
     border-radius: 10px;
 }
 
+.spacer {
+    flex: 1;
+}
+
 .btn-orcamento{
     text-transform: uppercase;
     padding: 1rem;
@@ -1063,7 +1067,7 @@ header{
 
     }
 
-    .sessao-orcamento label[for="layout-nao"]{
+    .group-layout label[for="layout-não"]{
         width: 15rem;
         font-size: 1.45rem;
         margin-left: -7rem;
