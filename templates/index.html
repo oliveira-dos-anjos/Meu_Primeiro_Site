@@ -223,19 +223,17 @@
                             </div>
                             <input type="hidden" name="_captcha" value="false">
                             <!-- Remova o campo "_next" para usar a rota padrão do Flask -->
-                            <button type="submit" class="btn btn-submit" name="btn-contato">Enviar</button>
+                            <button type="submit" class="btn btn-submit" id="btn-contato" name="btn-contato">Enviar</button>
+
                         </form>
                         <div class="msg_contato">
-                            <div class="msg_contato">
                                 {% if mensagem_email_contato %}
                                     <p class="msg_sucesso">{{ mensagem_email_contato }}</p>
                                 {% endif %}
                                 {% if erro_contato %}
                                     <p class="msg_erro">{{ erro_contato }}</p>
-                                {% endif %}
-                            </div>                            
-                        </div>
-                                     
+                                {% endif %}                            
+                        </div>                                    
                     </div>
                 </div>
             </section>
@@ -256,14 +254,13 @@
                                 <label for="layout-sim">Preciso de um layout</label>
                             </div>
                         </div>
-                        <label class=""></label>
+                        <div class="spacer"></div>
                         <div class="group-layout">
                             <div>
                                 <input type="radio" name="layout" id="layout-nao">
                                 <label for="layout-nao">Já tenho um layout</label>
                             </div> 
                         </div>
-                    
                         <label for="email">E-mail</label>
                         <div class="group-email">
                             <div>
@@ -275,7 +272,7 @@
                         <input type="range" name="prazo" id="prazo" min="1" max="10">
                         <!--<label id="preco">R$ 0,00</label>-->
                         <input type="hidden" name="_captcha" value="false">
-                        <button class="btn btn-orcamento" type="submit" name="btn-orcamento">Enviar</button>
+                        <button class="btn btn-orcamento" type="submit" id="btn-orcamento" name="btn-orcamento">Enviar</button>
                     </form>
                     <div class="msg_orcamento">
                         {% if mensagem_email_orcamento  %}
@@ -297,7 +294,7 @@
             <a href="#Home" id="link-topo">
                 <i class="fas fa-brands fa-arrow-up"></i>
             </a>
-        </div>    
+        </div>
+        <script src="{{ url_for('static', filename='/JS/scripts.js') }}"></script>     
     </body>
-    <script src="{{ url_for('static', filename='/JS/scripts.js') }}"></script>
 </html>

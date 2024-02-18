@@ -113,6 +113,35 @@ saibaMaisButtons.forEach((button, index) => {
 });
 
 
+document.getElementById('btn-contato').addEventListener('click', function(event) {
+  // Rolagem suave para a seção de Orçamento
+  console.log('Botão de contato clicado');
+  var orcamentoSection = document.querySelector('a[href="#Contato"]');
+  if (orcamentoSection) {
+      orcamentoSection.scrollIntoView({ 
+          behavior: 'smooth' 
+      });
+  } else {
+      console.log('Seção de orçamento não encontrada');
+  }
+});
+
+
+document.getElementById('btn-orcamento').addEventListener('click', function(event) {
+  // Rolagem suave para a seção de Orçamento
+  console.log('Botão de orçamento clicado');
+  var orcamentoSection = document.querySelector('a[href="#Orcamento"]');
+  if (orcamentoSection) {
+      orcamentoSection.scrollIntoView({ 
+          behavior: 'smooth' 
+      });
+  } else {
+      console.log('Seção de orçamento não encontrada');
+  }
+});
+
+
+
 document.querySelector("#qtde").addEventListener("change", atualizaPreco)
 document.querySelector("#JS").addEventListener("change", atualizaPreco)
 document.querySelector("#layout-sim").addEventListener("change", atualizaPreco)

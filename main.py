@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect
 from flask_mail import Mail, Message
 import re
 import sqlite3
 import os
 
 app = Flask(__name__)
+app.secret_key = 'sua_chave_secreta_aqui'
 
 
 # Obtendo o caminho absoluto para o arquivo Clientes.db na pasta 'data'
@@ -53,13 +54,24 @@ def Salvar_info(nome, email, mensagem):
     conn.commit()  # Salvar
     conn.close()  # Fechar
 
+@app.route('/submit_form', methods=['GET', 'POST'])
+def submit_form():
+    # Define uma variável de sessão indicando que a rolagem para a seção de orçamento deve ocorrer
+    session['scroll_to_contato'] = True
+    session['scroll_to_orcamento'] = True
+
+    return redirect('/')
+
+
 @app.route('/', methods=['GET', 'POST'])
 
 def index_email():
     mensagem_email_contato = None
     mensagem_email_orcamento = None
-    erro_orcamento = None
     erro_contato = None
+    erro_orcamento = None
+    scroll_to_contato = False
+    scroll_to_orcamento = False
     conn = None
 
     try:
@@ -87,9 +99,11 @@ def index_email():
                     msg.body = f'Nome: {nome}\nEmail: {email}\nMensagem: {mensagem}'
 
                     mensagem_email_contato = 'E-mail enviado com sucesso!'
-                    mail.send(msg)
                     
+                    mail.send(msg)                    
                     Salvar_info(nome, email, mensagem)
+
+                    submit_form()
                 else:
                     raise ValueError("Email inválido.")
 
@@ -102,10 +116,16 @@ def index_email():
 
                     mail.send(msg)
                     Salvar_info(nome, email, mensagem)
+
+                    submit_form()
                 else:
                     raise ValueError('Email inválido.')
 
-        return render_template('index.html', Clientes=Clientes, mensagem_email_contato=mensagem_email_contato, mensagem_email_orcamento=mensagem_email_orcamento)
+         # Verifica se a variável de sessão está definida
+        scroll_to_contato = session.pop('scroll_to_contato', False)
+        scroll_to_orcamento = session.pop('scroll_to_orcamento', False)
+
+        return render_template('index.html', Clientes=Clientes, mensagem_email_contato=mensagem_email_contato, mensagem_email_orcamento=mensagem_email_orcamento, scroll_to_contato=scroll_to_contato, scroll_to_orcamento=scroll_to_orcamento)
 
     except Exception as e:
         if conn:
@@ -120,4 +140,3 @@ def index_email():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
