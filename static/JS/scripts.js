@@ -114,15 +114,15 @@ saibaMaisButtons.forEach((button, index) => {
 
 
 document.getElementById('btn-contato').addEventListener('click', function(event) {
-  // Rolagem suave para a seção de Orçamento
+  // Rolagem suave para a seção de Contato
   console.log('Botão de contato clicado');
-  var orcamentoSection = document.querySelector('a[href="#Contato"]');
-  if (orcamentoSection) {
-      orcamentoSection.scrollIntoView({ 
+  var contatoSection = document.querySelector('a[href="#Contato"]');
+  if (contatoSection) {
+      contatoSection.scrollIntoView({ 
           behavior: 'smooth' 
       });
   } else {
-      console.log('Seção de orçamento não encontrada');
+      console.log('Seção de contato não encontrada');
   }
 });
 
