@@ -32,7 +32,7 @@ conn.close()  # Fechar
 # Configuração para Flask-Mail
 app.config['MAIL_SERVER'] = 'sandbox.smtp.mailtrap.io'
 app.config['MAIL_PORT'] = 587  # Use a porta adequada (25, 465, 587, ou 2525)
-app.config['MAIL_USERNAME'] = 'A09F28282721CF'
+app.config['MAIL_USERNAME'] = 'a09f28282721cf'
 app.config['MAIL_PASSWORD'] = '3248403a8ce0e8'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
